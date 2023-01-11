@@ -1,0 +1,10 @@
+<div
+  *ngIf="show"
+  @state
+  [ngClass]="[snackClass]"
+  class="rounded p-3 px-6 flex w-10/12 sm:w-fit flex-row justify-between items-center text-sm fixed left-1/2 -translate-x-1/2 bottom-3">
+  <p class="sm:mr-20 mr-7 text-white font-light">{{message}}</p>
+  <p class="cursor-pointer text-white font-light" (click)="onClose()">Close</p>
+</div>
+
+

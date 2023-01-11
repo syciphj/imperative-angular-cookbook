@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-primary {
+  @apply px-6 py-2.5 bg-blue-600 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-300 ease-in-out
+}
+
+.btn-danger {
+  @apply px-6 py-2.5 bg-rose-500 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-rose-700 hover:shadow-lg focus:bg-rose-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-300 ease-in-out
+}
+
+.btn-outline {
+  @apply px-6 py-2.5 border border-blue-600 text-blue-600 text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg hover:text-white active:bg-blue-800 active:shadow-lg transition duration-300 ease-in-out
+}
+
+.btn-dropdown {
+  @apply px-6 py-2.5 border border-blue-600 text-blue-600 text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg hover:text-white focus:bg-blue-700 focus:text-white focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-300 ease-in-out
+}
+
+.dropdown-item {
+  @apply text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100
+}
+
+.snack-success {
+  @apply bg-emerald-500 drop-shadow-lg shadow-md shadow-emerald-500/50
+}
+.snack-error {
+  @apply bg-rose-500 drop-shadow-lg shadow-md shadow-rose-500/50
+}

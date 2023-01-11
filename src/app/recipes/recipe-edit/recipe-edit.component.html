@@ -1,0 +1,120 @@
+
+<app-alert *ngIf="isAlertVisible" (close)="closeAlert()" (confirm)="onDeleteRecipe()"></app-alert>
+<div class="py-3 mb-3">
+  <a class="group w-fit hover:text-blue-700 transition duration-300 ease-in-out cursor-pointer flex flex-row items-center justify-start" (click)="goBack()">
+    <svg width="20px" height="20px" class="stroke-black group-hover:stroke-blue-700" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6l-6 6 6 6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    Back to {{previousPage}}
+  </a>
+</div>
+<form *ngIf="recipeForm" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+  <div class="flex flex-col sm:flex-row sm:justify-between">
+    <div class="border border-slate-200 rounded overflow-hidden min-h-[20em] mb-8 sm:w-1/2 sm:h-fit">
+      <div class="h-10 w-full bg-slate-800 text-white text-sm font-light relative flex justify-center items-center">This is an image preview from the URL in 'Image URL'</div>
+      <img [src]="url?.value" alt="">
+    </div>
+    <div class="border border-slate-200 rounded sm:w-1/2 sm:ml-4 p-4">
+      <div class="mb-3">
+        <label class="form-label text-sm inline-block mb-2 text-gray-700"
+        for="name">Recipe Name</label>
+        <input
+          type="text"
+          formControlName="name"
+          class="form-control block w-full mb-1 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          id="name"
+          [ngClass]="{'border-red-400 focus:border-red-400' : !name?.valid && name?.touched}"
+          placeholder="Enter recipe name..."
+        />
+        <span class="text-red-400 text-sm" [hidden]="name?.valid || name?.pristine">Recipe name is required</span>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label text-sm inline-block mb-2 text-gray-700"
+        for="url">Image URL</label>
+        <input
+          type="text"
+          formControlName="url"
+          class=" form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          id="url"
+          [ngClass]="{'border-red-400 focus:border-red-400' : !url?.valid && url?.touched}"
+          placeholder="Image URL here"
+        />
+        <span class="text-red-400 text-sm" [hidden]="url?.valid || url?.pristine">Image url is required</span>
+      </div>
+     
+      <div class="mb-3">
+        <label class="form-label text-sm inline-block mb-2 text-gray-700"
+        for="description">Recipe description</label>
+        <textarea
+          class="form-control block w-full px-3 py-1.5 text-base font-normal h-40 sm:h-auto text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          formControlName="description"
+          id="description"
+          rows="3"
+          [ngClass]="{'border-red-400 focus:border-red-400' : !description?.valid && description?.touched}"
+          placeholder="Enter a description..."
+        ></textarea>
+        <span class="text-red-400 text-sm" [hidden]="description?.valid || description?.pristine">Recipe description is required</span>
+      </div>
+
+      <h2 class="font-semibold text-xl mt-5">Ingredients</h2>
+      
+      <div class="mt-4" formArrayName="ingredients">
+        <div  class="mb-3 mt-6 sm:mt-0 pb-5 sm:pb-0 flex flex-col justify-between sm:flex-row border-b border-slate-200 sm:border-b-0"
+              *ngFor="let ingredient of ingredients.controls; let i = index"
+              [formGroupName]="i">
+          <div class="mb-3">
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control block w-full sm:w-80 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              placeholder="Enter ingredient name..."
+              [ngClass]="{'border-red-400 focus:border-red-400' : !ingredient.get('name')?.valid && ingredient.get('name')?.touched}"
+            />
+            <span class="text-red-400 text-sm" [hidden]="ingredient.get('name')?.valid || ingredient.get('name')?.pristine">Ingredient required</span>
+          </div>
+
+          <div class="flex flex-row">
+            <div class="sm:pl-2 w-1/2">
+              <input
+              type="number"
+              formControlName="quantity"
+              class="form-control w-full sm:ml-2 sm:w-20 block px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              [ngClass]="{'border-red-400 focus:border-red-400' : !ingredient.get('quantity')?.valid && ingredient.get('quantity')?.touched}"
+              placeholder="Qty"
+              />
+              <div class="text-red-400 text-sm ml-2" [hidden]="ingredient.get('quantity')?.valid || ingredient.get('quantity')?.pristine">
+                <span *ngIf="ingredient.get('quantity')?.errors?.['required']">Valid number required</span>
+                <span *ngIf="ingredient.get('quantity')?.errors?.['pattern']">Enter an integer greater than 0</span>
+              </div>
+            </div>
+  
+            <div class="btn-danger w-1/2 sm:px-8 sm:w-6 h-9 ml-3 sm:ml-6 flex justify-center items-center cursor-pointer" (click)="onDeleteIngredient(i)">
+              <div>
+                <svg width="18px" height="18px" viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg" color="#ffffff"><path d="M20 9l-1.995 11.346A2 2 0 0116.035 22h-8.07a2 2 0 01-1.97-1.654L4 9M21 6h-5.625M3 6h5.625m0 0V4a2 2 0 012-2h2.75a2 2 0 012 2v2m-6.75 0h6.75" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+      <div>
+        <button class="btn-outline" type="button" (click)="onAddIngredient()">Add Ingredient</button>
+      </div>
+
+      <div class="mt-4 pt-4 flex justify-end items-center border-t border-slate-200">
+        <button 
+          class="btn-primary mx-2 disabled:opacity-75 disabled:cursor-not-allowed flex flex-row items-center"
+          type="submit" [disabled]="!recipeForm.valid || recipeForm.pristine">
+          <span 
+            *ngIf="isLoading" 
+            class="animate-spin inline-block w-3 h-3 border-2 border-current border-t-transparent text-white rounded-full mr-2" role="status" aria-label="loading">
+          </span>
+          {{submitBtnTxt}}
+      </button>
+        <button *ngIf="editMode" class="btn-outline mx-2" type="button" (click)="onResetForm()">Reset</button>
+        <button *ngIf="editMode" class="btn-danger mx-2" type="button" (click)="onDeleteCheck()">Delete Recipe</button>
+      </div>
+    </div>
+  </div>
+</form>
+

@@ -1,0 +1,17 @@
+<div class="top-0 left-0 flex justify-center items-center fixed w-full h-full z-50" (click)="onClose()">
+  <div class="p-11 b-slate-300 rounded-2xl bg-white shadow-slate-900 shadow-2xl">
+    <div class="flex flex-col justify-center items-center">
+      <h1 class="font-semibold text-lg my-3">{{title}}</h1>
+      <p class="my-3 text-slate-500 font-light">{{message}}</p>
+      <div class="flex mt-5 w-full justify-between">
+        <button class="px-6 py-2.5 text-xs text-slate-400 leading-tight border border-slate-200 shadow-sm rounded uppercase active:bg-slate-200 hover:bg-slate-100 hover:text-slate-500 transition duration-300 ease-in-out"
+          (click)="onClose()">
+          {{cancelMsg}}
+        </button>
+        <button (click)="onConfirm()" class="btn-danger shadow-lg">{{confirmMsg}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-slate-800 opacity-80 top-0 left-0 fixed w-full h-full z-40"></div>

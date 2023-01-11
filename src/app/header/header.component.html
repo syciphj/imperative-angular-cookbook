@@ -1,0 +1,50 @@
+<div class="border-b border-slate-300">
+  <div class="mx-5 sm:mx-40 py-3 flex flex-row justify-between items-center">
+    <div class="flex flex-row justify-between items-center w-80">
+      <div class="group h-5 font-black text-xl flex justify-center items-center hover:text-blue-600 transition-colors duration-300 ease-in-out">
+        <a routerLink="/"><span class="text-blue-600 group-hover:text-black">i</span>cookbook</a>
+      </div>
+      <nav class="hidden sm:flex flex-row justify-between w-48">
+        <a routerLink="recipes" routerLinkActive="text-blue-700" class="hover:text-blue-700 transition duration-300 ease-in-out">Recipes</a>
+        <a routerLink="shopping-list" routerLinkActive="text-blue-700" class="hover:text-blue-700 transition duration-300 ease-in-out">Shopping List</a>
+      </nav>
+    </div>
+    <div class="sm:hidden stroke-blue-500 cursor-pointer" (click)="openMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+    </div>
+    
+    <div class="hidden sm:block">
+      <div class="flex flex-row" *ngIf="!isLoggedIn">
+        <button class="btn-primary" routerLink="login">Login</button>
+      </div>
+      <div class="flex flex-row" *ngIf="isLoggedIn">
+        <button class="btn-outline" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div [ngClass]="{'invisible opacity-0': !isMobileMenuOpen}" class="bg-slate-800 opacity-80 fixed top-0 left-0 w-full h-full transition-all duration-300 ease-in-out"></div>
+
+<div [ngClass]="{'invisible opacity-0': !isMobileMenuOpen}"  (click)="closeMenu()" class="opacity-100 sm:hidden flex justify-center fixed top-0 left-0 w-full h-full backdrop-blur-sm transition-all duration-200 ease-in-out cursor-pointer">
+  <div class="sm:hidden bg-white fixed p-10 rounded-lg h-[60vh] w-10/12 mt-10 mx-10 drop-shadow-lg shadow-slate-800 shadow-lg">
+    <nav>
+      <div class="flex flex-row justify-between">
+        <div class="text-lg font-bold text-slate-600 mb-5">Menu</div>
+        <svg width="24px" height="24px" class="stroke-slate-500 cursor-pointer" (click)="closeMenu()" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.758 17.243L12.001 12m5.243-5.243L12 12m0 0L6.758 6.757M12.001 12l5.243 5.243" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </div>
+      
+      <ul>
+        <a routerLink="recipes" routerLinkActive="text-blue-700"><li class="py-5 border-b border-slate-100">Recipes</li></a>
+        <a routerLink="shopping-list" routerLinkActive="text-blue-700"><li class="py-5 border-b border-slate-100">Shopping List</li></a>
+        <a  *ngIf="!isLoggedIn" routerLink="login" routerLinkActive="text-blue-700"><li class="py-5">Login</li></a>
+        <li *ngIf="isLoggedIn" (click)="logout()" class="py-5">Logout</li>  
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+
