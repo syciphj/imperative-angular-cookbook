@@ -1,5 +1,9 @@
 # Imperative Angular Cookbook
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsyciphj%2Fimperative-angular-cookbook)
+
+[View the site in action](https://imperative-angular-cookbook.vercel.app/recipes)
+
 This is part one of a three-part project series to demonstrate the the differences and advantages of the "Imperative" style of development in Angular compared to the "Declarative" or reactive style. 
 
 If you're a new Angular developer and you've just come of some of the more well-known tutorials out there, this specific type of project might be familiar to you. This is a practical combination of the best practices from the Angular docs and well-known tutorials bundled up into a more or less complete demo. 
