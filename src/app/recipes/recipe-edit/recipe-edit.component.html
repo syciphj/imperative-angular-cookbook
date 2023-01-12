@@ -1,20 +1,20 @@
 
 <app-alert *ngIf="isAlertVisible" (close)="closeAlert()" (confirm)="onDeleteRecipe()"></app-alert>
 <div class="py-3 mb-3">
-  <a class="group w-fit hover:text-blue-700 transition duration-300 ease-in-out cursor-pointer flex flex-row items-center justify-start" (click)="goBack()">
-    <svg width="20px" height="20px" class="stroke-black group-hover:stroke-blue-700" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6l-6 6 6 6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+  <a class="group w-fit  dark:text-zinc-200 dark:hover:text-blue-500 hover:text-blue-700 transition duration-300 ease-in-out cursor-pointer flex flex-row items-center justify-start" (click)="goBack()">
+    <svg width="20px" height="20px" class="stroke-black group-hover:stroke-blue-700 dark:group-hover:stroke-blue-500 dark:stroke-zinc-200 transition duration-300 ease-in-out" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6l-6 6 6 6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
     Back to {{previousPage}}
   </a>
 </div>
 <form *ngIf="recipeForm" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
   <div class="flex flex-col sm:flex-row sm:justify-between">
-    <div class="border border-slate-200 rounded overflow-hidden min-h-[20em] mb-8 sm:w-1/2 sm:h-fit">
-      <div class="h-10 w-full bg-slate-800 text-white text-sm font-light relative flex justify-center items-center">This is an image preview from the URL in 'Image URL'</div>
+    <div class="border border-slate-200 dark:border-slate-500 rounded overflow-hidden min-h-[20em] mb-8 sm:w-1/2 sm:h-fit">
+      <div class="h-10 w-full bg-slate-800 dark:bg-blue-800 text-white text-sm font-light relative flex justify-center items-center">This is an image preview from the URL in 'Image URL'</div>
       <img [src]="url?.value" alt="">
     </div>
-    <div class="border border-slate-200 rounded sm:w-1/2 sm:ml-4 p-4">
+    <div class="border border-slate-200 dark:border-slate-500 rounded sm:w-1/2 sm:ml-4 p-4">
       <div class="mb-3">
-        <label class="form-label text-sm inline-block mb-2 text-gray-700"
+        <label class="form-label text-sm inline-block mb-2 text-gray-700 dark:text-zinc-400"
         for="name">Recipe Name</label>
         <input
           type="text"
@@ -28,7 +28,7 @@
       </div>
 
       <div class="mb-3">
-        <label class="form-label text-sm inline-block mb-2 text-gray-700"
+        <label class="form-label text-sm inline-block mb-2 text-gray-700 dark:text-zinc-400"
         for="url">Image URL</label>
         <input
           type="text"
@@ -42,7 +42,7 @@
       </div>
      
       <div class="mb-3">
-        <label class="form-label text-sm inline-block mb-2 text-gray-700"
+        <label class="form-label text-sm inline-block mb-2 text-gray-700 dark:text-zinc-400"
         for="description">Recipe description</label>
         <textarea
           class="form-control block w-full px-3 py-1.5 text-base font-normal h-40 sm:h-auto text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -55,7 +55,7 @@
         <span class="text-red-400 text-sm" [hidden]="description?.valid || description?.pristine">Recipe description is required</span>
       </div>
 
-      <h2 class="font-semibold text-xl mt-5">Ingredients</h2>
+      <h2 class="font-semibold text-xl mt-5 dark:text-zinc-100">Ingredients</h2>
       
       <div class="mt-4" formArrayName="ingredients">
         <div  class="mb-3 mt-6 sm:mt-0 pb-5 sm:pb-0 flex flex-col justify-between sm:flex-row border-b border-slate-200 sm:border-b-0"
@@ -101,9 +101,9 @@
         <button class="btn-outline" type="button" (click)="onAddIngredient()">Add Ingredient</button>
       </div>
 
-      <div class="mt-4 pt-4 flex justify-end items-center border-t border-slate-200">
+      <div class="mt-4 pt-4 flex justify-end items-center border-t border-slate-200 dark:border-slate-500">
         <button 
-          class="btn-primary mx-2 disabled:opacity-75 disabled:cursor-not-allowed flex flex-row items-center"
+          class="btn-primary mx-2 disabled:opacity-75 disabled:cursor-not-allowed dark:disabled:bg-blue-800 flex flex-row items-center"
           type="submit" [disabled]="!recipeForm.valid || recipeForm.pristine">
           <span 
             *ngIf="isLoading" 

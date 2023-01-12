@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
@@ -11,6 +11,9 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
   constructor( private authService: AuthService){}
 
+  @Output() darkMode = new EventEmitter<boolean>();
+
+  isDarkMode: boolean = true;
   isLoggedIn!: boolean;
   userSub : Subscription = new Subscription;
   logoutSub : Subscription = new Subscription;
@@ -32,6 +35,11 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
   closeMenu(){
     this.isMobileMenuOpen = false;
+  }
+
+  toggleDarkMode(){
+    this.isDarkMode = !this.isDarkMode
+    this.darkMode.emit(this.isDarkMode)
   }
 
   ngOnDestroy(): void {

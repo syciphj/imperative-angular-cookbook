@@ -1,10 +1,10 @@
-<h1 class="text-2xl font-bold mb-4">Add an item</h1>
+<h1 class="text-2xl font-bold mb-4 dark:text-zinc-100">Add an item</h1>
 
-<div class="border border-slate-200 rounded flex flex-col px-8 py-5">
-  <h2 class="text-slate-500 mb-4">Add a new ingredient your list.</h2>
+<div class="border border-slate-200 dark:border-slate-500 rounded flex flex-col px-8 py-5">
+  <h2 class="text-slate-500 mb-4 dark:text-zinc-300">Add a new ingredient your list.</h2>
   <form (ngSubmit)="onSubmit()" [formGroup]="ingredientForm">
     <div class="mb-3">
-      <label class="form-label text-sm inline-block mb-2 text-gray-700"
+      <label class="form-label text-sm inline-block mb-2 text-gray-700 dark:text-zinc-400"
       for="name">Ingredient Name</label>
       <input
         type="text"
@@ -18,7 +18,7 @@
     </div>
 
     <div class="mb-3">
-      <label class="form-label text-sm inline-block mb-2 text-gray-700"
+      <label class="form-label text-sm inline-block mb-2 text-gray-700 dark:text-zinc-400"
       for="quantity">Quantity</label>
       <input
         type="number"
@@ -33,9 +33,9 @@
         <span *ngIf="quantity?.errors?.['pattern']">Enter an integer greater than 0</span>
       </div>
     </div>
-    <div class="mt-4 pt-4 flex justify-between items-center border-t border-slate-200">
+    <div class="mt-4 pt-4 flex justify-between items-center border-t border-slate-200 dark:border-slate-500">
       <button 
-        class="btn-primary disabled:opacity-75 disabled:cursor-not-allowed flex flex-row items-center" 
+        class="btn-primary disabled:opacity-75 disabled:cursor-not-allowed dark:disabled:bg-blue-800 flex flex-row items-center" 
         type="submit" 
         [disabled]="!ingredientForm.valid || ingredientForm.pristine">
         <span 

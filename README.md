@@ -20,7 +20,7 @@ A lot of folks learning frontend frameworks tend to get sucked into what style i
 - :white_check_mark: Proper use of subscriptions without using async pipes. (Part 2 will have async pipes).
 - :white_check_mark: Proper authorization using guards and interceptors.
 - :white_check_mark: Firebase REST APIs for Authentication and Realtime Database CRUD to demonstrate `HttpClient` observables.
-- :white_check_mark: Tailwind for quick component creation and mobile responsive design. 
+- :white_check_mark: Tailwind for quick implementation of: components, mobile responsive design, and dark mode. 
 - :white_check_mark: Healthy dose of comments in code to help beginners.
 
 ## Development server

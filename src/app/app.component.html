@@ -1,8 +1,14 @@
-<app-header></app-header>
-
-<main class="sm:mx-40 mx-5 my-5 mb-20">
-  <router-outlet></router-outlet>
-</main>
 <app-snackbar></app-snackbar>
 
-<app-footer></app-footer>
+<div [ngClass]="{'dark': isDarkMode}">
+  <div class="dark:bg-gray-900 transition-colors duration-300">
+    <app-header (darkMode)="toggleDarkClass($event)" ></app-header>
+  <main>
+    <div class="sm:mx-40 mx-5 my-5 mb-20">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+  <app-footer></app-footer>
+  </div>
+</div>
+

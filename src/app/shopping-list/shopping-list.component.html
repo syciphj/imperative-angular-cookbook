@@ -5,19 +5,19 @@
   </div>
   
   <div class="sm:w-1/2">
-    <h1 class=" text-2xl font-bold sm:ml-8 mb-4">Shopping List</h1>
-    <div class="border border-slate-200 rounded sm:ml-8 p-4">
+    <h1 class=" text-2xl font-bold sm:ml-8 mb-4 dark:text-zinc-100">Shopping List</h1>
+    <div class="border border-slate-200 dark:border-slate-500 rounded sm:ml-8 p-4">
       <div>
         <ul *ngIf="ingredients.length > 0; else emptyIngredients">
           <li 
             *ngFor="let ingredient of ingredients" 
-            class="border border-slate-200 flex flex-row first:border-b-0"
+            class="border border-slate-200  dark:border-slate-500 flex flex-row first:border-b-0 dark:decoration-zinc-200"
             [ngClass]="{'line-through': ingredient.checked}">
-            <div class="w-10 border-r border-slate-200 flex justify-center items-center p-5 px-7 bg-slate-100">
+            <div class="w-10 border-r border-slate-200  dark:border-slate-500 flex justify-center items-center p-5 px-7 bg-slate-100 dark:bg-gray-700">
               <input type="checkbox" [checked]="ingredient.checked" (change)="toggleStrikethrough(ingredient)">
             </div>
-            <p class="flex justify-center items-center px-3 sm:w-20 w-24 border-r border-slate-200 text-center">{{ingredient.quantity}}</p>
-            <p class="flex justify-start items-center pl-5 w-full">{{ingredient.name}}</p>
+            <p class="flex justify-center items-center px-3 sm:w-20 w-24 border-r border-slate-200  dark:border-slate-500 text-center dark:text-zinc-300">{{ingredient.quantity}}</p>
+            <p class="flex justify-start items-center pl-5 w-full dark:text-zinc-300">{{ingredient.name}}</p>
             <button
               (click)="onDeleteIngredient(ingredient.id)" 
               class="flex justify-center items-center cursor-pointer p-4 bg-rose-500 hover:bg-rose-600 hover:shadow-lg focus:bg-rose-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-300 ease-in-out">

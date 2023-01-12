@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .btn-primary {
-  @apply px-6 py-2.5 bg-blue-600 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-300 ease-in-out
+  @apply px-6 py-2.5 bg-blue-600 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-300 ease-in-out dark:shadow-blue-600/50 dark:shadow-md dark:hover:bg-blue-700
 }
 
 .btn-danger {
@@ -11,11 +11,11 @@
 }
 
 .btn-outline {
-  @apply px-6 py-2.5 border border-blue-600 text-blue-600 text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg hover:text-white active:bg-blue-800 active:shadow-lg transition duration-300 ease-in-out
+  @apply px-6 py-2.5 border border-blue-600 text-blue-600 text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg hover:text-white active:bg-blue-800 active:shadow-lg transition duration-300 ease-in-out dark:border-blue-400 dark:text-blue-500 dark:shadow-blue-500/50 dark:shadow-md dark:hover:bg-blue-700 dark:hover:text-white
 }
 
 .btn-dropdown {
-  @apply px-6 py-2.5 border border-blue-600 text-blue-600 text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg hover:text-white focus:bg-blue-700 focus:text-white focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-300 ease-in-out
+  @apply px-6 py-2.5 border border-blue-600 text-blue-600 text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg hover:text-white focus:bg-blue-700 focus:text-white focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-300 ease-in-out dark:shadow-blue-600/50 dark:shadow-md dark:hover:bg-blue-700
 }
 
 .dropdown-item {
